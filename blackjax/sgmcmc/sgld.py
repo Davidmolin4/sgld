@@ -30,10 +30,11 @@ def kernel() -> Callable:
         grad_estimator: Callable,
         minibatch: PyTree,
         step_size: float,
+        temperature: float = 1.0,
     ):
 
         logprob_grad = grad_estimator(position, minibatch)
-        new_position = integrator(rng_key, position, logprob_grad, step_size)
+        new_position = integrator(rng_key, position, logprob_grad, step_size, temperature)
 
         return new_position
 
