@@ -538,8 +538,8 @@ class sgld:
 
         step = cls.kernel()
 
-        def step_fn(rng_key: PRNGKey, state, minibatch: PyTree, step_size: float):
-            return step(rng_key, state, grad_estimator, minibatch, step_size)
+        def step_fn(rng_key: PRNGKey, state, minibatch: PyTree, step_size: float, temperature: float):
+            return step(rng_key, state, grad_estimator, minibatch, step_size, temperature)
 
         return step_fn
 
